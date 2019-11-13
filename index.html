@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Resource Sustainability Quiz App</title>
+        <meta name="description" type="A quiz app about earth's sustainable resources and waste management.">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="index.css" />
+    </head>
+
+    <body>
+        <header role="banner" class="title">
+            <h1>Resource Sustainability Quiz</h1>
+            <h3>How much do you know?</h3>  
+        </header>
+    
+        <main role="main" class="container">
+            <!--Start Section-->
+            <section class='start-container'>
+                <h2>Are you ready to test your general knowledge of resource sustainability?</h2>
+                <button class="start" type="submit">Start Quiz</button>
+            </section>
+
+            <!--Question Section-->
+            <section class="question-container hidden">
+                <!--<p class="show-question">Question 1: What are the three R's of sustainable waste management?</p>-->
+            </section>
+
+            <!--Options Section-->
+            <form class="options-form hidden" action="" method="post">
+                <!--options container-->
+                <fieldset class="options-container">
+                    <!--<input class="show-option" type="radio" name="answer" value="0">reduce, recycle, and renew<br />
+                    <input class="show-option" type="radio" name="answer" value="1">reduce, reuse, and recycle<br />
+                    <input class="show-option" type="radio" name="answer" value="2">recycle, replace, and repair<br />
+                    <input class="show-option" type="radio" name="answer" value="3">recycle, repair, and reuse<br />-->
+                </fieldset>
+            </form>
+
+            <!--Response section-->
+            <section> 
+                <div class="response">
+                    
+                </div>
+            </section>
+
+            <!--question number and score section-->
+            <section class="question-score-container hidden"> 
+                <div class="question-number">
+                    <p class="number">Question: 0 out of 7</p>
+                </div>
+                <div class="question-score">
+                    <p class="score">Score: 0 out of 7</p>
+                </div>
+                <button type="submit" class="submit-answer">Submit Answer</button>
+            </section>
+
+            <!--Final Section-->
+            <section>
+                <div class="final-container hidden">
+                    <!--reset button-->
+                    <button type="submit" class='reset-button'>Try Again</button>
+                </div>
+            </section>  
+        </main>
+        <footer>Github: <a href="https://github.com/Lmcmaaser" > Lmcmaaser</a></footer>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

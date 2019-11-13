@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: black;
+  background: cover;
+  background-color: darkblue; /*maybe make this an image of the earth?*/
+}
+
+.hidden {
+  display: none;
+}
+
+.title {
+  border: 5px outset black;
+  border-radius: 10px;
+  margin: 25px 50px 30px;
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  font-weight: bold;
+}
+
+main.container {
+  width: 60%;
+  padding: 35px;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: white;
+  border-radius: 10px;
+  border: 5px outset black;
+}
+
+section.start-container {
+  text-align: center;
+  /*margin-top: 10px;
+  margin-bottom: 10px;*/
+  margin: auto;
+  padding: 15px;
+}
+
+h2 {
+  padding: 15px;
+}
+
+.question-container {
+  margin: auto;
+  /*padding: 10px;*/
+}
+
+.show-question {
+  font-size: 18px;
+  display: block;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-weight: bold;
+}
+
+.options-container {
+  padding: 10px;
+  /*margin: 10px;*/
+}
+
+.response {
+  margin: 20px;
+  text-align: center;
+}
+
+.question-number {
+  background-color: white;
+  display: inline-block;
+  border: 2px black solid;
+  border-radius: 5px;
+  width: 25%;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  margin-right: 25px;
+}
+.question-score {
+  background-color: white;
+  display: inline-block;
+  border: 2px black solid;
+  border-radius: 5px;
+  width: 25%;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  margin-right: 25px;
+}
+
+
+@media only screen and (min-width: 320px) {
+
+}
+
+@media only screen and (min-width: 550px) {}
+
+@media only screen and (min-width: 800px) {}
