@@ -5,8 +5,8 @@
 body {
   font-family: "Roboto", sans-serif;
   color: black;
-  background: cover;
-  background-color: darkblue; /*maybe make this an image of the earth? url(background.jpg) fixed;*/
+  /*background: cover;*/
+  background: url(background.jpg) fixed; /*maybe make this an image of the earth? url(background.jpg) fixed;*/
 }
 
 .title {
@@ -30,7 +30,7 @@ main.container {
   border: 5px outset black;
 }
 
-section.start-container {
+.start-screen {
   text-align: center;
   /*margin-top: 10px;
   margin-bottom: 10px;*/
@@ -55,7 +55,7 @@ h2 {
   font-weight: bold;
 }
 
-.options-container {
+.show-options {
   padding: 10px;
   /*margin: 10px;*/
 }
