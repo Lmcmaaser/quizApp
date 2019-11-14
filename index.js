@@ -89,42 +89,67 @@ function startQuiz() {
     console.log('startQuiz ran')
     questionNumber = 0;
     displayQuestion();
-  });
+  })
+};
+
+function questionOptions() {
+  let allOptions = STORE[questionNumber].options.length;
+  for (let i = 0; i < allOptions; i++) {
+    $('.show-question').append(
+      `<input class="show-option" type="radio" name="answer" value=${STORE[questionNumber].options}>${STORE[questionNumber].options[i]}<br />`
+    )
+  }
 };
 
 function displayQuestion() {
-  const allOptions = STORE[questionNumber].options.length;
-  for (let i = 0; i < allOptions; i++) {
-    $('.container').append(
-    `<form class="question-form" action="" method="post">
-      <fieldset ">
-        <legend class="show-question">${STORE[questionNumber].question}</legend>
-        <input class="show-option" type="radio" name="answer" value=${STORE[questionNumber].options}>${STORE[questionNumber].options[i]}<br />
-        <input class="show-option" type="radio" name="answer" value=${STORE[questionNumber].options}>${STORE[questionNumber].options[i]}<br />
-        <input class="show-option" type="radio" name="answer" value=${STORE[questionNumber].options}>${STORE[questionNumber].options[i]}<br />
-        <input class="show-option" type="radio" name="answer" value=${STORE[questionNumber].options}>${STORE[questionNumber].options[i]}<br />
-      </fieldset>
-        <button type="submit" class="submit-answer">Submit Answer</button>
-    </form>
-    <section class="question-score-container hidden"> 
+  $('.container').append(
+    `<section class="question-score-container hidden"> 
       <div class="question-number">
-          <p class="number">Question: ${questionNumber + 1} out of 7</p>
+        <p class="number">Question: ${questionNumber + 1} out of 7</p>
       </div>
       <div class="question-score">
-          <p class="score">Score: ${score} out of 7</p>
+        <p class="score">Score: ${score} out of 7</p>
       </div>
+    </section>
+    <form class="question-form" action="" method="post">
+    <fieldset>
+      <legend class="show-question">${STORE[questionNumber].question}</legend>
+    </fieldset>
       <button type="submit" class="submit-answer">Submit Answer</button>
-    </section>`,
-    );
-  }     
+    </form>`,
+  );  
+  questionOptions();   
   console.log('questionDisplay ran', questionNumber);
+  submitAnswer();
 };
 
+function submitAnswer() {
+  $('.question-score-container').on('click', '.submit-answer', function (event) {
+    event.preventDefault();
+    $('.container').empty();
+    let selected = $('input:checked');
+    let selectedOption = selected.val();
+    console.log('the selected option is', selectedOption);
+    let correct = STORE[questionNumber].answer;
+    if (selectedOption === correct) {
+      $('.container').append(
+        `<h4>Your answer is correct!</h4>
+        <button type="button" class="nextButton button">Next Question</button>`
+      )
+    } else {
+      $('.container').append(
+        `<h4>That is the wrong answer. It is actually: </h4>
+        <p class="correct-answer">${STORE[questionNumber].answer}</p>
+        <button type="button" class="nextButton button">Next Question</button>`)
+    }
+  }); 
+};
 
 //call all the functions
 function quizApp() {
   startQuiz();
   //displayQuestion()
-}
+  //submitAnswer();
+};
 
 $(quizApp);
