@@ -165,7 +165,6 @@ function nextQuestion() {
       displayResults();
     } else {
       displayQuestion(); 
-      upQuestionNumber(); 
     }
   console.log('nextQuestion ran');
   });
@@ -194,11 +193,8 @@ function takeAgain() {
   });
 };
 
-//call all the functions
 function quizApp() {
   startQuiz();
-  //displayQuestion()
-  //submitAnswer();
   nextQuestion();
 };
 
