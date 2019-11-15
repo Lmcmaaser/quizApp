@@ -42,12 +42,7 @@ h2 {
   padding: 15px;
 }
 
-.question-container {
-  margin: auto;
-  /*padding: 10px;*/
-}
-
-.show-question {
+legend {
   font-size: 18px;
   display: block;
   padding-bottom: 5px;
@@ -55,7 +50,7 @@ h2 {
   font-weight: bold;
 }
 
-.show-options {
+.show-option {
   padding: 10px;
   /*margin: 10px;*/
 }
