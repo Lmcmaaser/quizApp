@@ -97,18 +97,16 @@ function upQuestionNumber() {
   /*$('.questionTracker').empty();
   $('.questionTracker').append(
     `<p>Question: <span class="questionNumber">${STORE.questionNumber + 1}</span>/7</p>`*/
-  //STORE.questionNumber++;
-  $('.questionNumber').text(STORE.questionNumber + 1
-  );
+  STORE.questionNumber++;
+  $('.questionNumber').text(STORE.questionNumber);
 };
 
 function upScore() {
   /*$('.scoreTracker').empty();
   $('.scoreTracker').append(
     `<p>Score: <span class="score">${STORE.score + 1}</span>/7</p>`*/
-  //STORE.score++;
-  $('.score').text(STORE.score + 1
-  );
+  STORE.score++;
+  $('.score').text(STORE.score);
 };
 
 //displays question and calls options function 
@@ -142,12 +140,12 @@ function submitAnswer() {
   $('.container').on('click', '.submit-answer', function (event) {
     event.preventDefault();
     let currentQuestion = STORE.allQuestions[STORE.questionNumber] //works
-    let selected =  $('input:checked').val(); 
+    let selected = $('input:checked').val(); //does not work
     let correct = currentQuestion.answer; //works
     console.log(correct);
     console.log(currentQuestion);
     console.log(selected);
-    if (selected == correct) { //does not work
+    if (selected == correct) { 
       $('.submit-answer').hide();
       $('.container').append(
         `<h4>That answer is correct!</h4>
@@ -165,13 +163,13 @@ function submitAnswer() {
 
 function nextQuestion() {
   //$('.next').click(function () {
-  $('.container').on('click', '.next-button', function (event) {
+  $('.container').on('click', '.next', function (event) {
     $('.container').empty();
     if (STORE.questionNumber === STORE.allQuestions.length) {
       displayResults();
     } else {
-      displayQuestion();
-      upQuestionNumber();  
+      displayQuestion(); 
+      upQuestionNumber(); 
     }
   console.log('nextQuestion ran', questionNumber);
   });
@@ -205,6 +203,7 @@ function quizApp() {
   startQuiz();
   //displayQuestion()
   //submitAnswer();
+  nextQuestion();
 };
 
 $(quizApp);
