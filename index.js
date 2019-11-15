@@ -4,78 +4,78 @@ const STORE = {
     {
       question: "Question 1: What are the three R's of sustainable waste management?",
       options: [
-        "1) reduce, recycle, and renew", 
-        "2) reduce, reuse, and recycle", 
-        "3) recycle, replace, and repair", 
-        "4) recycle, repair, and reuse"
+        "reduce, recycle, and renew", 
+        "reduce, reuse, and recycle", 
+        "recycle, replace, and repair", 
+        "recycle, repair, and reuse"
       ],
-      answer: "2) reduce, reuse, and recycle"
+      answer: "reduce, reuse, and recycle"
     },
     //2
     {
       question: "Question 2: Which of these items is not recycleable?",
       options: [
-        "1) paper",
-        "2) aluminum cans", 
-        "3) plastic",
-        "4) drinking glasses"
+        "paper",
+        "aluminum cans", 
+        "plastic",
+        "drinking glasses"
       ],
-      answer: "4) drinking glasses"
+      answer: "drinking glasses"
     },
     //3
     {
       question: "Question 3: How many times can paper be recycled?",
       options: [
-        "1) indefinitely",
-        "2) two - three times", 
-        "3) five - seven times", 
-        "4) once"
+        "indefinitely",
+        "two - three times", 
+        "five - seven times", 
+        "once"
       ],
-      answer: "3) five - seven times"
+      answer: "five - seven times"
     },
     //4
     {
       question: "Question 4: Which of these are not renewable energy resources?", 
       options: [
-        "1) sunlight", 
-        "2) wind",
-        "3) geothermal heat", 
-        "4) natural gas"
+        "sunlight", 
+        "wind",
+        "geothermal heat", 
+        "natural gas"
       ],
-      answer: "4) natural gas"
+      answer: "natural gas"
     },
     //5
     {
       question: "Question 5: Worldwide, what is the most common biofuel?",
       options: [
-        "1) ethanol", 
-        "2) biodiesel", 
-        "3) methanol", 
-        "4) Biogas"
+        "ethanol", 
+        "biodiesel", 
+        "methanol", 
+        "Biogas"
       ],
-      answer: "1) ethanol"
+      answer: "ethanol"
     },
     //6
     {
       question: "Question 6: How much of the Earth's water is freshwater?",
       options: [
-        "1) 49.5%", 
-        "2) 5.75%", 
-        "3) 2.5%", 
-        "4) 25.5%"
+        "49.5%", 
+        "5.75%", 
+        "2.5%", 
+        "25.5%"
       ],
-      answer: "3) 2.5%"
+      answer: "2.5%"
     },
     //7
     {
       question: "Question 7: Of the total amount of water available globally, how much is fresh and unpolluted?",
       options: [
-        "1) 1.75%", 
-        "2) 0.003%", 
-        "3) 0.05%", 
-        "4) 1%"
+        "1.75%", 
+        "0.003%", 
+        "0.05%", 
+        "1%"
       ],
-      answer: "2) 0.003%"
+      answer: "0.003%"
     }, 
   ],
   questionNumber: 0,
@@ -94,32 +94,22 @@ function startQuiz() {
 };
 
 function upQuestionNumber() {
-  $('.questionTracker').empty();
+  /*$('.questionTracker').empty();
   $('.questionTracker').append(
-    `<p>Question: <span class="questionNumber">${STORE.questionNumber + 1}</span>/7</p>`
+    `<p>Question: <span class="questionNumber">${STORE.questionNumber + 1}</span>/7</p>`*/
+  //STORE.questionNumber++;
+  $('.questionNumber').text(STORE.questionNumber + 1
   );
 };
 
 function upScore() {
-  $('.scoreTracker').empty();
+  /*$('.scoreTracker').empty();
   $('.scoreTracker').append(
-    `<p>Score: <span class="score">${STORE.score + 1}</span>/7</p>`
+    `<p>Score: <span class="score">${STORE.score + 1}</span>/7</p>`*/
+  //STORE.score++;
+  $('.score').text(STORE.score + 1
   );
 };
-//increments the number value of the "score" variable by one
-//and updates the "score" number text 
-/*function upScore() {
-  score++;
-  $('.score').text(score);
-  console.log('upScore ran');
-}*/
-/*//increments the number value of the "question number" variable by one
-//and updates the "question number" text 
-function upQuestionNumber() {
-  questionNumber++;
-  $('.questionNumber').text(questionNumber + 1);
-  console.log('upQuestionNumber ran');
-}*/
 
 //displays question and calls options function 
 function displayQuestion() {
@@ -151,51 +141,38 @@ function displayOptions() {
 function submitAnswer() {
   $('.container').on('click', '.submit-answer', function (event) {
     event.preventDefault();
-    $('.container').empty();
-    /*let selected = $('input:checked');
-    let selectedOption = selected.val();
-    console.log('the selected option is', selectedOption);
-    let correct = STORE[questionNumber].answer;*/
-    let currentQuestion = STORE.allQuestions[STORE.questionNumber];
-    //let selectedOption = $("input:checked").val();
-    let selectedOption = $('input[class="show-option"]:checked').val();
-    let correct = currentQuestion.answer;
-    if (selectedOption === correct) {
+    let currentQuestion = STORE.allQuestions[STORE.questionNumber] //works
+    let selected =  $('input:checked').val(); 
+    let correct = currentQuestion.answer; //works
+    console.log(correct);
+    console.log(currentQuestion);
+    console.log(selected);
+    if (selected == correct) { //does not work
+      $('.submit-answer').hide();
       $('.container').append(
-        `<h4>Your answer is correct!</h4>
-        <button type="button" class="nextButton button">Next Question</button>`
-      )
+        `<h4>That answer is correct!</h4>
+        <button type="button" class="next">Next Question</button>`);
       upScore();
     } else {
+      $('.submit-answer').hide();
       $('.container').append(
         `<h4>That is the wrong answer. It is actually: </h4>
         <p class="correct-answer">${correct}</p>
-        <button type="button" class="next-button">Next Question</button>`)
-    }
+        <button type="button" class="next">Next Question</button>`);
+    };
   }); 
 };
 
-function endOfQuestions() {
-  $('.container').on('click','.next-question', (event) => {
-    STORE.questionNumber === STORE.allQuestions.length? 
-    displayResults() : displayQuestion();
-  });
-}
-
 function nextQuestion() {
+  //$('.next').click(function () {
   $('.container').on('click', '.next-button', function (event) {
     $('.container').empty();
-    $('.question-form').append(
-      `<form class="question-form" action="" method="post">
-      <fieldset>
-        <legend class="show-question">${STORE[questionNumber].question}</legend>
-      </fieldset>
-        <button type="submit" class="submit-answer">Submit Answer</button>
-      </form>`
-    ); 
-  upQuestionNumber();
-  endOfQuestions();
-  displayOptions();   
+    if (STORE.questionNumber === STORE.allQuestions.length) {
+      displayResults();
+    } else {
+      displayQuestion();
+      upQuestionNumber();  
+    }
   console.log('nextQuestion ran', questionNumber);
   });
 };

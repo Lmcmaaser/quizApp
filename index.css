@@ -9,6 +9,10 @@ body {
   background: url(background.jpg) fixed; /*maybe make this an image of the earth? url(background.jpg) fixed;*/
 }
 
+.hidden {
+  display: none;
+}
+
 .title {
   border: 5px outset black;
   border-radius: 10px;
