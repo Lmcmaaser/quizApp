@@ -1,6 +1,7 @@
 //question data stored in object STORE
 const STORE = {
-  allQuestions: [//1
+  allQuestions: [
+    //1
     {
       question: "Question 1: What are the three R's of sustainable waste management?",
       options: [
@@ -82,35 +83,28 @@ const STORE = {
   score: 0
 };
 
-//
+//starts quiz
 function startQuiz() {
   $('.start').click(function () {
     $('.container').empty();
     console.log('startQuiz ran')
-    questionNumber = 0;
     displayQuestion();
-    upQuestionNumber();
   })
 };
 
 function upQuestionNumber() {
-  /*$('.questionTracker').empty();
-  $('.questionTracker').append(
-    `<p>Question: <span class="questionNumber">${STORE.questionNumber + 1}</span>/7</p>`*/
   STORE.questionNumber++;
   $('.questionNumber').text(STORE.questionNumber);
+  console.log('upQuestion ran')
 };
 
 function upScore() {
-  /*$('.scoreTracker').empty();
-  $('.scoreTracker').append(
-    `<p>Score: <span class="score">${STORE.score + 1}</span>/7</p>`*/
   STORE.score++;
   $('.score').text(STORE.score);
 };
 
-//displays question and calls options function 
-function displayQuestion() {
+//displays question and calls displayOptions and submitAnswer functions 
+function displayQuestion() { 
   $('.container').append(
     `<form class="question-form" action="" method="post">
     <fieldset>
@@ -121,8 +115,9 @@ function displayQuestion() {
       <button type="submit" class="submit-answer">Submit Answer</button>
     </form>`
   ); 
-  displayOptions();   
-  console.log('displayQuestion ran', questionNumber);
+  displayOptions();  
+  upQuestionNumber();
+  console.log('displayQuestion ran');
   submitAnswer();
 };
 
@@ -134,14 +129,15 @@ function displayOptions() {
       ` <input class="show-option" type="radio" name="answer" value=${allOptions.options[i]}>${allOptions.options[i]}<br />`
     )
   }
+  console.log(allOptions)
 };
 
 function submitAnswer() {
   $('.container').on('click', '.submit-answer', function (event) {
     event.preventDefault();
-    let currentQuestion = STORE.allQuestions[STORE.questionNumber] //works
-    let selected = $('input:checked').val(); //does not work
-    let correct = currentQuestion.answer; //works
+    let currentQuestion = STORE.allQuestions[STORE.questionNumber] //does not work, 1 ahead
+    let selected = $('input:checked').val(); //half works
+    let correct = currentQuestion.answer; //does not work, 1 ahead 
     console.log(correct);
     console.log(currentQuestion);
     console.log(selected);
@@ -171,7 +167,7 @@ function nextQuestion() {
       displayQuestion(); 
       upQuestionNumber(); 
     }
-  console.log('nextQuestion ran', questionNumber);
+  console.log('nextQuestion ran');
   });
 };
 
