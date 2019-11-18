@@ -64,30 +64,6 @@ legend {
   text-align: center;
 }
 
-/*.question-number {
-  background-color: white;
-  display: inline-block;
-  border: 2px black solid;
-  border-radius: 5px;
-  width: 25%;
-  text-align: center;
-  font-size: 15px;
-  padding: 5px;
-  margin-right: 25px;
-}
-.question-score {
-  background-color: white;
-  display: inline-block;
-  border: 2px black solid;
-  border-radius: 5px;
-  width: 25%;
-  text-align: center;
-  font-size: 15px;
-  padding: 5px;
-  margin-right: 25px;
-}*/
-
-
 @media only screen and (min-width: 320px) {
 
 }

@@ -135,9 +135,9 @@ function displayOptions() {
 function submitAnswer() {
   $('.container').on('click', '.submit-answer', function (event) {
     event.preventDefault();
-    let currentQuestion = STORE.allQuestions[STORE.questionNumber] //does not work, 1 ahead
+    let currentQuestion = STORE.allQuestions[STORE.questionNumber] //1 ahead
     let selected = $('input:checked').val(); //half works
-    let correct = currentQuestion.answer; //does not work, 1 ahead 
+    let correct = currentQuestion.answer; //1 ahead
     console.log(correct);
     console.log(currentQuestion);
     console.log(selected);
