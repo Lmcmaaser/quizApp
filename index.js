@@ -116,9 +116,8 @@ function displayQuestion() {
     </form>`
   ); 
   displayOptions();  
-  upQuestionNumber();
+  //upQuestionNumber();
   console.log('displayQuestion ran');
-  submitAnswer();
 };
 
 //displays options
@@ -126,7 +125,7 @@ function displayOptions() {
   let allOptions = STORE.allQuestions[STORE.questionNumber];
   for (let i = 0; i < allOptions.options.length; i++) {
     $('.insert-option').append(
-      ` <input class="show-option" type="radio" name="answer" value=${allOptions.options[i]}>${allOptions.options[i]}<br />`
+      ` <input class="show-option" type="radio" name="answer" value="${allOptions.options[i]}">${allOptions.options[i]}<br />`
     )
   }
   console.log(allOptions)
@@ -164,6 +163,7 @@ function nextQuestion() {
     if (STORE.questionNumber === STORE.allQuestions.length) {
       displayResults();
     } else {
+      upQuestionNumber();
       displayQuestion(); 
     }
   console.log('nextQuestion ran');
@@ -195,6 +195,7 @@ function takeAgain() {
 
 function quizApp() {
   startQuiz();
+  submitAnswer();
   nextQuestion();
 };
 
