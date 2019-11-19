@@ -89,7 +89,8 @@ const STORE = {
 
 //starts quiz
 function startQuiz() {
-  $('.start').click(function () {
+  $(document).on('click', '.start', function () {
+  //$('.start').click(function () {
     $('.container').empty();
     console.log('startQuiz ran');
     displayQuestion();
