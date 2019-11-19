@@ -86,11 +86,12 @@ const STORE = {
   score: 0
 };
 
+
 //starts quiz
 function startQuiz() {
   $('.start').click(function () {
     $('.container').empty();
-    console.log('startQuiz ran')
+    console.log('startQuiz ran');
     displayQuestion();
   })
 };
@@ -98,15 +99,16 @@ function startQuiz() {
 function upQuestionNumber() {
   STORE.questionNumber++;
   $('.questionNumber').text(STORE.questionNumber);
-  console.log('upQuestion ran')
+  console.log('upQuestion ran');
 };
 
 function upScore() {
   STORE.score++;
   $('.score').text(STORE.score);
+  console.log('upScore ran');
 };
 
-//displays question and calls displayOptions and submitAnswer functions 
+//displays question and calls displayOptions 
 function displayQuestion() { 
   $('.container').append(
     `<form class="question-form" action="" method="post">
@@ -119,7 +121,6 @@ function displayQuestion() {
     </form>`
   ); 
   displayOptions();  
-  //upQuestionNumber();
   console.log('displayQuestion ran');
 };
 
@@ -131,15 +132,30 @@ function displayOptions() {
       ` <input class="show-option" type="radio" name="answer" value="${allOptions.options[i]}">${allOptions.options[i]}<br />`
     )
   }
-  console.log(allOptions)
+  console.log('displayOptions ran')
+};
+
+//calls displayQuestion or displayResults
+function nextQuestion() {
+  $('.container').on('click', '.next', function (event) {
+    $('.container').empty();
+    if (STORE.questionNumber === 6/*STORE.allQuestions.length*/) { 
+      displayResults();
+    } else {
+      upQuestionNumber();
+      displayQuestion(); 
+    }
+  console.log('nextQuestion ran');
+  console.log(STORE.questionNumber);
+  });
 };
 
 function submitAnswer() {
   $('.container').on('click', '.submit-answer', function (event) {
     event.preventDefault();
-    let currentQuestion = STORE.allQuestions[STORE.questionNumber] //1 ahead
-    let selected = $('input:checked').val(); //half works
-    let correct = currentQuestion.answer; //1 ahead
+    let currentQuestion = STORE.allQuestions[STORE.questionNumber]
+    let selected = $('input:checked').val(); 
+    let correct = currentQuestion.answer; 
     console.log(correct);
     console.log(currentQuestion);
     console.log(selected);
@@ -159,20 +175,6 @@ function submitAnswer() {
   }); 
 };
 
-function nextQuestion() {
-  //$('.next').click(function () {
-  $('.container').on('click', '.next', function (event) {
-    $('.container').empty();
-    console.log(STORE.questionNumber);
-    if (STORE.questionNumber === 6/*STORE.allQuestions.length*/) { //6
-      displayResults();
-    } else {
-      upQuestionNumber();
-      displayQuestion(); 
-    }
-  console.log('nextQuestion ran');
-  });
-};
 
 function displayResults() {
  $('.container').empty();
@@ -183,35 +185,35 @@ function displayResults() {
     <button class="take-again" type="submit">Take Again</button>
   </section>`
  );
+ console.log('displayResults ran');
  upQuestionNumber();
  takeAgain();
 };
 
 function takeAgain() {
   $('.container').on('click', '.take-again', function (event) {
-    STORE.questionNumber = 0;
+    STORE.currentQuestion = 0;
     STORE.score = 0;
     $('.score').text(0);
     $('.questionNumber').text(0);
     $('.container').empty();
     $('.container').append(
       `<section class='start-screen'>
-        <h2>Are you ready to test your general knowledge of resource sustainability?</h2>
+        <h2>Are you ready to test your knowledge of resource sustainability?</h2>
         <button class="start" type="submit">Start Quiz</button>
       </section>`
     );
   });
   console.log('takeAgain ran')
+  console.log(STORE.questionNumber);
 };
-
-
 
 
 function quizApp() {
   startQuiz();
   submitAnswer();
   nextQuestion();
-  takeAgain();
+  //takeAgain();
 };
 
 $(quizApp);
