@@ -78,6 +78,9 @@ const STORE = {
       ],
       answer: "0.003%"
     }, 
+    {
+
+    }
   ],
   questionNumber: 0,
   score: 0
@@ -160,7 +163,8 @@ function nextQuestion() {
   //$('.next').click(function () {
   $('.container').on('click', '.next', function (event) {
     $('.container').empty();
-    if (STORE.questionNumber === STORE.allQuestions.length) {
+    console.log(STORE.questionNumber);
+    if (STORE.questionNumber === 6/*STORE.allQuestions.length*/) { //6
       displayResults();
     } else {
       upQuestionNumber();
@@ -174,15 +178,21 @@ function displayResults() {
  $('.container').empty();
  $('.container').append(
   `<section class='start-screen'>
-    <h2>Your score is${STORE.score}</h2>
+    <h2>Your score is ${STORE.score}</h2>
     <p>Take the test again!</p>
     <button class="take-again" type="submit">Take Again</button>
   </section>`
  );
+ upQuestionNumber();
+ takeAgain();
 };
 
 function takeAgain() {
   $('.container').on('click', '.take-again', function (event) {
+    STORE.questionNumber = 0;
+    STORE.score = 0;
+    $('.score').text(0);
+    $('.questionNumber').text(0);
     $('.container').empty();
     $('.container').append(
       `<section class='start-screen'>
@@ -191,12 +201,17 @@ function takeAgain() {
       </section>`
     );
   });
+  console.log('takeAgain ran')
 };
+
+
+
 
 function quizApp() {
   startQuiz();
   submitAnswer();
   nextQuestion();
+  takeAgain();
 };
 
 $(quizApp);
