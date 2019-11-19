@@ -190,7 +190,7 @@ function displayResults() {
 
 function takeAgain() {
   $('.container').on('click', '.take-again', function (event) {
-    STORE.currentQuestion = 0;
+    STORE.questionNumber = 0;
     STORE.score = 0;
     $('.score').text(0);
     $('.questionNumber').text(0);
