@@ -78,9 +78,6 @@ const STORE = {
       ],
       answer: "0.003%"
     }, 
-    {
-
-    }
   ],
   questionNumber: 0,
   score: 0
