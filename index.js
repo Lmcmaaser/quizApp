@@ -127,7 +127,7 @@ function displayOptions() {
   let allOptions = STORE.allQuestions[STORE.questionNumber];
   for (let i = 0; i < allOptions.options.length; i++) {
     $('.insert-option').append(
-      ` <input class="show-option" type="radio" name="answer" value="${allOptions.options[i]}">${allOptions.options[i]}<br />`
+      `<input class="show-option" type="radio" name="answer" value="${allOptions.options[i]}" required>${allOptions.options[i]}<br />`
     )
   }
   console.log('displayOptions ran')
