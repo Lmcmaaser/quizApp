@@ -89,7 +89,6 @@ function startQuiz() {
   $(document).on('click', '.start', function () {
   //$('.start').click(function () {
     $('.container').empty();
-    console.log('startQuiz ran');
     displayQuestion();
   })
 };
@@ -97,13 +96,11 @@ function startQuiz() {
 function upQuestionNumber() {
   STORE.questionNumber++;
   $('.questionNumber').text(STORE.questionNumber);
-  console.log('upQuestion ran');
 };
 
 function upScore() {
   STORE.score++;
   $('.score').text(STORE.score);
-  console.log('upScore ran');
 };
 
 //displays question and calls displayOptions 
@@ -119,7 +116,6 @@ function displayQuestion() {
     </form>`
   ); 
   displayOptions();  
-  console.log('displayQuestion ran');
 };
 
 //displays options
@@ -130,7 +126,6 @@ function displayOptions() {
       `<input class="show-option" type="radio" name="answer" value="${allOptions.options[i]}" required>${allOptions.options[i]}<br />`
     )
   }
-  console.log('displayOptions ran')
 };
 
 //calls displayQuestion or displayResults
@@ -143,8 +138,6 @@ function nextQuestion() {
       upQuestionNumber();
       displayQuestion(); 
     }
-  console.log('nextQuestion ran');
-  console.log(STORE.questionNumber);
   });
 };
 
@@ -154,9 +147,6 @@ function submitAnswer() {
     let currentQuestion = STORE.allQuestions[STORE.questionNumber]
     let selected = $('input:checked').val(); 
     let correct = currentQuestion.answer; 
-    console.log(correct);
-    console.log(currentQuestion);
-    console.log(selected);
     if (selected == correct) { 
       $('.submit-answer').hide();
       $('.container').append(
@@ -183,7 +173,6 @@ function displayResults() {
     <button class="take-again" type="submit">Take Again</button>
   </section>`
  );
- console.log('displayResults ran');
  upQuestionNumber();
  takeAgain();
 };
@@ -202,8 +191,6 @@ function takeAgain() {
       </section>`
     );
   });
-  console.log('takeAgain ran')
-  console.log(STORE.questionNumber);
 };
 
 
@@ -211,7 +198,6 @@ function quizApp() {
   startQuiz();
   submitAnswer();
   nextQuestion();
-  //takeAgain();
 };
 
 $(quizApp);
